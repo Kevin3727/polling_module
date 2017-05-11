@@ -7,7 +7,7 @@ def main():
 
     print("%%%%%%%%%%%%%%%%%$%%%%%%%%%%%")
     print("%          WELCOME          %")
-    print("% to the ECS polling system %")
+    print("%   to the polling system   %")
     print("% created by Kevin Ghorbani %")
     print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     print('\n')
