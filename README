@@ -1,9 +1,11 @@
+polling_module
+
 Author: Kevin Ghorbani
-This is an auditable anonymous polling/voting software.
+This is an anonymous auditable polling/voting software.
 
 LICENSE: GNU General Public License v3.0
 
 
-Disclaimer: this is an open source, educational software
-            creator is not resposible for any hacking and
-            poll manipulations.
+Disclaimer: This software is an open source software created
+            for educational purposes. Creator is not resposible
+            for any hacking and poll manipulations.
