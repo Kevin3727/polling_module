@@ -19,6 +19,7 @@ import time
 import random
 import string
 import getpass
+import fcntl
 from Crypto import Random
 from Crypto.Cipher import AES
 

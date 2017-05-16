@@ -463,7 +463,9 @@ def vote(UserName_, admin_):
     receipt_ = hashlib.sha256(
         (UserName_.encode('utf8') + salt_)).hexdigest()[:32]
     with open('../bin/polls/poll_' + Number_ + '.results', 'a') as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
         f.write(str(Vote_) + '\t' + str(receipt_) + '\n')
+        fcntl.flock(f, fcntl.LOCK_UN)
 
     print("Thank you! Your vote has been casted anonymously!")  # receipt needed
     print("Your receipt number is: " + bcolors.BOLD + receipt_ + bcolors.ENDC)
