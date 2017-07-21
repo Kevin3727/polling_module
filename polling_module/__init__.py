@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
 created by Kevin Ghorbani
 
@@ -8,7 +9,6 @@ Disclaimer: this is an open source software
             hacking and poll manipulations.
 """
 
-import metadata
 import sys
 import os
 import random
@@ -16,18 +16,13 @@ import struct
 import hashlib
 import pickle
 import time
-import random
+import sqlite3
 import string
 import getpass
-import fcntl
+import csv
+import numpy as np
 from Crypto import Random
 from Crypto.Cipher import AES
-
-
-__version__ = metadata.version
-__author__ = metadata.authors[0]
-__license__ = metadata.license
-__copyright__ = metadata.copyright
 
 
 User_hash_sha512 = hashlib.sha512('userhashpwd'.encode('utf8')).hexdigest()
@@ -46,10 +41,9 @@ class bcolors:
 
 
 def try_except(f):
-    def helper(*args):
+    def helper(x):
         try:
-            return f(*args)
+            return f(x)
         except BaseException:
             return None
     return helper
-
