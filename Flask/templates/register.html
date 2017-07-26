@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Local Colleges</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    {% extends "base.html" %}
+    {% block content %}
+    {% if session['admin'] %}
+
+    <h2>Register</h2>
+    <form action="/register/" method="POST">
+      <div class="form-group">
+          <input type="name" name="name" placeholder="Name" class="form-control" style="max-width: 300px;"  autofocus required>
+          <br>
+          <input type="username" name="username" placeholder="Username" class="form-control" style="max-width: 300px;"  autofocus required>
+          <br>
+          <input type="email" name="email" placeholder="Email" class="form-control" style="max-width: 300px;"  autofocus required>
+          <br>
+        </div>
+        <button type="submit" class="btn btn-default">Register</button>
+        </form>
+    {% for msg in msg0 %}
+      <h4>{{ msg }}</h4>
+    {% endfor %}
+    <br><br>
+    OR
+    <br>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+    Select CSV file to upload:
+    (format: name, username, email) [NOT ACTIVE]
+    <input type="file" name="csvFile" id="csvFile" class="btn btn-default">
+    <input type="submit" value="Upload File" name="submit" class="btn btn-default">
+    </form>
+    <br><br>
+    {% for error in errors %}
+      <h4>{{ error }}</h4>
+    {% endfor %}
+    {% endif %}
+    {% endblock %}
+</div>
+</body>
+</html>

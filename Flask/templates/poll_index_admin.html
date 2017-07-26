@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Local Colleges</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+    {% extends "base.html" %}
+    {% block content %}
+    {% if session['logged_in'] %}
+       
+	    {% if data %}
+	    <h3>{{data}}</h3>
+	    {% else %}
+	    <a href="/logout">Logout</a> <br> <br>
+        <a href="/register">Register users</a> <br>
+        <a href="/manager">Manage users</a> <br>
+        <a href="/createPoll">Create new poll</a> <br>
+        <a href="/closePoll">Close polls</a> <br>
+        <a href="/viewPollResults">View Poll reluslts</a> <br>
+        {% endif %}
+    {% else %}
+    <p>Not logged in!</p>
+
+    <a href="/login">Login</a> 
+
+    {% endif %}
+    {% endblock %}
+
+</div>
+</body>
+</html>

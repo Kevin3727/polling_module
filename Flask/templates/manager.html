@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Local Colleges</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        {% extends "base.html" %}
+        {% block content %}
+        {% if session['admin'] %}
+        
+        <form action="/manager/" method="POST">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="/register" data-toggle="modal">Add Users</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">List of users</h3>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table">
+            <div class="panel panel-default">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Reset Password</th>
+                            <th>Delete User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user, email in result.iteritems() %}
+                        <tr>
+                            <td> {{ user }} </td>
+                            <td>  </td>
+                            <td> {{ email }} </td>
+                            <td><center><span style="cursor:pointer;" class="glyphicon glyphicon-refresh" aria-hidden="true"></span></center></td>
+                            <td><center><span style="cursor:pointer;color:#e43309;" class="glyphicon glyphicon-remove" aria-hidden="true" name="delete_user" value="{{ user }}"></span></center></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </table>
+        </div>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+    {% for error in errors %}
+      <h4>{{ error }}</h4>
+    {% endfor %}
+    {% endif %}
+    {% endblock %}
+    </div>
+
+
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
